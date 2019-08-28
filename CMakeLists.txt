@@ -104,16 +104,31 @@ or CMAKE_C_FLAGS are used), Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
 endif()
 
 
+if (NOT LIBZ_LIBRARY)
 find_library(LIBZ_LIBRARY
-    NAMES zdll.lib z zlib.lib
+    NAMES zdll.lib z zlib.lib zlib libzlib libzlib.a
+    PATHS /usr/lib /usr/local/lib
+          ${CMAKE_OSX_SYSROOT}/usr/lib
+          ${ZIPPER_DEPENDENCY_DIR}/lib
+          NO_DEFAULT_PATH
+          NO_CMAKE_ENVIRONMENT_PATH
+          NO_CMAKE_PATH
+          NO_SYSTEM_ENVIRONMENT_PATH
+          NO_CMAKE_SYSTEM_PATH    
+          DOC "The file name of the zip compression library."
+    )
+endif()
+if (NOT LIBZ_LIBRARY)
+find_library(LIBZ_LIBRARY
+    NAMES zdll.lib z zlib.lib libzlib zlib libzlib.a
     PATHS /usr/lib /usr/local/lib
           ${CMAKE_OSX_SYSROOT}/usr/lib
           ${ZIPPER_DEPENDENCY_DIR}/lib
           ${ADDITIONAL_LIB_DIRS}
           $ENV{ZLIBROOT}/lib
     DOC "The file name of the zip compression library."
-)
-
+    )
+endif()
 
 if (NOT LIBZ_INCLUDE_DIR)
   find_path(LIBZ_INCLUDE_DIR

@@ -163,6 +163,7 @@ endif()
 set(USE_ZLIB ON)
 add_definitions( -DUSE_ZLIB )
 
+file(TO_CMAKE_PATH ${LIBZ_LIBRARY} LIBZ_LIBRARY)
 # make sure that we have a valid zip library
 check_library_exists("${LIBZ_LIBRARY}" "gzopen" "" LIBZ_FOUND_SYMBOL)
 if(NOT LIBZ_FOUND_SYMBOL)

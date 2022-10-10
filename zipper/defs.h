@@ -15,7 +15,7 @@ extern "C"
 #endif
 
 
-#if (defined(_WIN32)) || (defined(_WIN64))
+#if ((defined(_WIN32)) || (defined(_WIN64))) && !defined(__MINGW32__)
 # include <direct.h>
 # include <io.h>
 #else
@@ -30,17 +30,17 @@ extern "C"
 #define WRITEBUFFERSIZE (8192)
 #define MAXFILENAME (256)
 
-#if (defined(_WIN32)) || (defined(_WIN64))
+#if ((defined(_WIN32)) || (defined(_WIN64))) && !defined(__MINGW32__)
 #define USEWIN32IOAPI
 #include "iowin32.h"
 #endif
 }
 
-#if (defined(_WIN32)) || (defined(_WIN64))
+#if ((defined(_WIN32)) || (defined(_WIN64))) && !defined(__MINGW32__)
   #include <filesystem>
 #endif
 
-#if (defined(_WIN32)) || (defined(_WIN64))
+#if ((defined(_WIN32)) || (defined(_WIN64))) && !defined(__MINGW32__)
     #define EXCEPTION_CLASS std::exception
 #else
     #define EXCEPTION_CLASS std::runtime_error
@@ -62,7 +62,7 @@ extern "C"
 #endif
 #endif
 
-#if (defined(_WIN32)) || (defined(_WIN64))
+#if ((defined(_WIN32)) || (defined(_WIN64))) && !defined(__MINGW32__)
 #  define MKDIR(d) _mkdir(d)
 #  define CHDIR(d) _chdir(d)
 #else

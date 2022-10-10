@@ -7,7 +7,7 @@
 
 #include <cstdio>
 
-#if defined(WIN32) && !defined(CYGWIN)
+#if defined(WIN32) && !defined(CYGWIN) && !defined(__MINGW32__)
 #  include "tps/dirent.h"
 #  include "tps/dirent.c"
 #else

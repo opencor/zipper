@@ -177,9 +177,11 @@ public:
              unsigned int hour,
              unsigned int minute,
              unsigned int second,
-             unsigned long dosdate)
+             unsigned long dosdate,
+             bool isDirectory=false
+        )
         : name(name), compressedSize(compressed_size),
-          uncompressedSize(uncompressed_size), dosdate(dosdate)
+          uncompressedSize(uncompressed_size), dosdate(dosdate), isDir(isDirectory)
     {
         // timestamp YYYY-MM-DD HH:MM:SS
         std::stringstream str;
@@ -200,6 +202,7 @@ public:
     unsigned long long int compressedSize, uncompressedSize;
     unsigned long dosdate;
     tm_s unixdate;
+    bool isDir;
 };
 
 } // namespace zipper

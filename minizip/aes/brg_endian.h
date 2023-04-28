@@ -45,6 +45,10 @@ Issue Date: 20/12/2007
 /* of the four forms SYMBOL, _SYMBOL, __SYMBOL & __SYMBOL__, which  */
 /* seem to encompass most endian symbol definitions                 */
 
+#define LITTLE_ENDIAN
+// Note: enforce Little Endianness so that we can build minizip for Windows ARM. The other plaftorms and architectures
+//       are fine, but since they all use Little Endian too, well... we may as well enforce it for everybody.
+
 #if defined( BIG_ENDIAN ) && defined( LITTLE_ENDIAN )
 #  if defined( BYTE_ORDER ) && BYTE_ORDER == BIG_ENDIAN
 #    define PLATFORM_BYTE_ORDER IS_BIG_ENDIAN

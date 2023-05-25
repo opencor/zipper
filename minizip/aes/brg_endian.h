@@ -45,7 +45,7 @@ Issue Date: 20/12/2007
 /* of the four forms SYMBOL, _SYMBOL, __SYMBOL & __SYMBOL__, which  */
 /* seem to encompass most endian symbol definitions                 */
 
-#define LITTLE_ENDIAN
+#define LITTLE_ENDIAN 1
 // Note: enforce Little Endianness so that we can build minizip for Windows ARM. The other plaftorms and architectures
 //       are fine, but since they all use Little Endian too, well... we may as well enforce it for everybody.
 
